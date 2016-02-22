@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Introduction to MirageOS and NTP</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../">Kia</a>
+            </div>
+            <div id="navigation">
+                <a href="../">Home</a>
+                <a href="../archive.html">Archive</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Introduction to MirageOS and NTP</h1>
+
+            <div class="info">
+    Posted on December 20, 2015
+    
+</div>
+
+<p>I’ve been getting started on my <a href="https://wiki.gnome.org/Outreachy/2015/DecemberMarch">Outreachy internship</a>, working with the <a href="https://mirage.io/">MirageOS</a> unikernel, (part of Xen). A unikernel is a modern way to organize application code along with systems code. Rather than having an application (along with the runtime system of whatever language it is written in) running on a fully general operating system in a hypervisor, unikernels work to allow collapse of non-necessary abstraction layers. Rather than a fully general OS that can run any application and handle its system calls, we have a set of libraries that provide similar services that an OS would provide with syscalls, along with a runtime system (for whatever language the unikernel is written in), and configuration tools that allow for each application to be compiled with the OS libraries and the runtime into a single bespoke image that can be loaded into the hypervisor and run.</p>
+<p>There are several significant advantages to unikernels. All the code is executed in the same address space and context; there are no syscalls involved and no application/kernel privilege level changes (there are of course hypercalls and unikernel/hypervisor context switches but those are inevitable here). This makes analysis of the code much easier – everything besides the hypervisor itself is code that the compiler can see at one time and can optimize / typecheck appropriately. Avoiding userspace/kernel context switches is also kinder on the caches/TLBs – syscalls to the OS are replaced with function calls in the same address space! Also, while there’s no fundamental requirement for this, it’s possible to write almost all the code for a unikernel’s OS libraries in a strongly-typed functional programming language such as Haskell or OCaml as opposed to writing it in C.</p>
+<p>There are a handful of servers for common network services/protocols already implemented in OCaml and that can run on MirageOS such as an <a href="https://github.com/mirage/mirage-www">http server</a> (that the MirageOS website is hosted on, a <a href="https://github.com/mirage/ocaml-dns">DNS server</a> and a <a href="https://mirage.io/blog/introducing-charrua-dhcp">DHCP server</a>, however a conspicuously missing one is NTP – the <a href="https://en.wikipedia.org/wiki/Network_Time_Protocol">Network Time Protocol</a>.</p>
+<p>NTP allows a computer with a network connection to get its internal clock synchronized over the internet to a reference clock that has specialized timing hardware such as a GPS receiver or even a <a href="https://en.wikipedia.org/wiki/Atomic_clock">cesium or rubidium frequency standard</a>. An NTP server doesn’t do much – all it does is look at its time reference (either specialized timekeeping hardware or just another NTP server that itself has specialized time hardware) and answer client requests with the current time. An NTP client has to do two primary things with the information it gets from replies from an NTP server – the first is correcting the time offset between its clock so the time is, well, accurate. This isn’t enough, alas, as the timekeeping crystal oscillator in most computers isn’t too good (it doesn’t need to be, because of NTP &gt;_&lt;) – not only is its frequency inaccurate (it might run too fast, like a cheap digital watch that gains a few seconds per day), but the inaccuracy in frequency itself <strong>drifts</strong> as a function of temperature (and other factors).</p>
+<p>An NTP client that wishes to try its best at keeping accurate time (as opposed to the kind that just periodically set the local clock to the time received by a reference server and completely <em>ignores</em> what happens to the local clock) needs a feedback loop that adjusts the phase (to minimize the time offset) and frequency (to minimize the frequency error) of the local clock, fed with measurements made (over the network) of reference servers. After some time, the feedback loop will converge and accurately track the local clock’s frequency offset and thus will keep accurate time without having to step the clock.</p>
+<p>For this project, I’m working on implementing an NTP server and an NTP client in OCaml for the MirageOS unikernel. My plan is to make a purely functional NTP library that handles parsing/generating NTP packets and the state machine / filtering / clock discipline algorithms that is free of dependencies to UNIX. Once I am done with that, I will try to interface it to MirageOS’s clock interface (and modify it if necessary).</p>
+
+        </div>
+        <div id="footer">
+            Site generated with Hakyll.
+        </div>
+    </body>
+</html>
