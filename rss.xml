@@ -23,7 +23,8 @@
 <li>the MMU’s tables might have to be changed</li>
 <li>some of the MMU’s TLB (a specialized <a href="https://en.wikipedia.org/wiki/Translation_lookaside_buffer">cache for translation results</a>) has to be invalidated</li>
 <li>the CPU’s instruction and data caches need to be appropriately maintained (which might involve invalidation/flushing)</li>
-<li>register state needs to be saved and restored.</li>
+<li>register state needs to be saved and restored</li>
+<li>pipelines probably need to be flushed / reloaded</li>
 </ul>
 <p>The performance of context switches is crucial as every <a href="https://en.wikipedia.org/wiki/System_call">system call</a> a userspace program does to interact with hardware or OS services causes at least two context switches – one userspace-to-kernel, one kernel-to-userspace.</p>
 <h3 id="context-switches-hurt-your-caches">Context switches <em>hurt</em> your caches…</h3>
