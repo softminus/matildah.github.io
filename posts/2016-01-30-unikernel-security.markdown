@@ -13,7 +13,8 @@ Properly set up MMU-enforced isolation provides isolation between malicious and 
 * the MMU's tables might have to be changed
 * some of the MMU's TLB (a specialized [cache for translation results](https://en.wikipedia.org/wiki/Translation_lookaside_buffer)) has to be invalidated
 * the CPU's instruction and data caches need to be appropriately maintained (which might involve invalidation/flushing)
-* register state needs to be saved and restored.
+* register state needs to be saved and restored
+* pipelines probably need to be flushed / reloaded
 
 The performance of context switches is crucial as every [system call](https://en.wikipedia.org/wiki/System_call) a userspace program does to interact with hardware or OS services causes at least two context switches -- one userspace-to-kernel, one kernel-to-userspace.
 
