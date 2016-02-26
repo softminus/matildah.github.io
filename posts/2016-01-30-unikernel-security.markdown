@@ -39,7 +39,7 @@ The guarantees that a properly-managed MMU provide are just isolation between yo
 
 Using a unikernels doesn't just have security advantages from using a single memory-safe and type-safe language. Admittedly, production-quality debugging/instrumentation tooling isn't currently available for unikernels. However, it's easier to create that tooling for something written in a single language with a decent type system that lives in a single address space than tools that having to create bespoke instrumentation code that lives in the kernel (and userspace tools to interface with it) for each component, each with its own data format and structures, in this veritable [menagerie](http://www.brendangregg.com/Perf/linux_observability_tools.png) of kernel components.
 
-
+Unikernels are appealing not just because they let us use a decent language with a good type system and memory safety instead of piles of C -- they let us redraw isolation and abstraction boundaries with more appropriate and specific tools provided by our language's type systems. When the intended application doesn't involve the kernel running userspace code that is unknown or potentially hostile or not yours, a unikernel model where all the code lives in the same address space and is managed by a single language runtime offers quite a few advantages.
 
 [^3]: Caches like temporal and spatial locality. Synchronous system calls break those.
 [^1]: For example, the hardware can tag each TLB entry with an address space identifier number and have a register (that the OS changes upon context switch) for the current address space identifier and only use TLB entries that have a matching tag.
