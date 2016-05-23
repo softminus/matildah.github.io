@@ -1,5 +1,5 @@
 ---
-title: Single address spaces: design flaw or feature?
+title: "Single address spaces: design flaw or feature?"
 ---
 
 Unikernels operate in a single address space. Usually this is an address space provided by a hypervisor (or a microkernel) but there's no reason you can't run a single unikernel on a single CPU ("bare metal") with no hypervisor involved. As unikernels become more well-known, I've seen people describe the single-address-space design choice in quite pejorative terms. Unfortunately, many explanations of unikernels do not adequately explain this decision to ditch the MMU. In the first part of this blog post, I will explain the performance advantages of living in a single address space and how even some high performance non-unikernel systems are designed to exploit those benefits. In the second, I will explore the security/correctness aspects of the unikernel address space model.
