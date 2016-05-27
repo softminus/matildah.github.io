@@ -10,7 +10,7 @@ in `chrome://settings/content` be ineffective for PDFium, the chromium PDF reade
 
 ![](../images/2016-05-26-214607_763x394_scrot.png)
 
-I was mildly annoyed because I regularly keep huge PDFs ^[either 4 kilopage datasheets or papers where every dot on a scatterplot is its own PDF object/entity/whatever and not part of a bitmap] in my tabs to refer to them regularly -- but only let PDFium run when i'm actively reading them to avoid any performance impact. I looked at the [changelog](https://chromium.googlesource.com/chromium/src/+log/50.0.2661.102..51.0.2704.63?pretty=fuller&n=10000) for chromium^[This was nontrival because this is chromium version 51 and searching for pretty much anything with "chromium 51" gives you results for chromium-51, a radioactive isotope of chromium used in radiolabeling studies] and found that commit, whose description is
+I was mildly annoyed because I regularly keep huge PDFs ^[for example, ~4 kilopage datasheets or papers where scatterplots aren't bitmaps but every dot on the scatterplot is its own PDF object/entity/whatever that needs to be individually rendered and displayed.] in my tabs to refer to them regularly -- but only let PDFium run when i'm actively reading them to avoid any performance impact. I looked at the [changelog](https://chromium.googlesource.com/chromium/src/+log/50.0.2661.102..51.0.2704.63?pretty=fuller&n=10000) for chromium^[This was nontrival because this is chromium version 51 and searching for pretty much anything with "chromium 51" gives you results for chromium-51, a radioactive isotope of chromium used in radiolabeling studies] and found that commit, whose description is
 
 ~~~~~~~~
 Internal PDF viewer will always load if it is not disabled, even if
