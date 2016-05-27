@@ -16,7 +16,7 @@
     
 </div>
 
-<p>Chromium got <a href="https://chromium.googlesource.com/chromium/src/+/e53608ba54b3aff711c1e1c68243417f99bcd340%5E%21/">this</a> commit, which makes the “Let me choose when to run plugin content” option</p>
+<p>I updated chromium today, and noticed an unwelcome change which made the “Let me choose when to run plugin content” option</p>
 <div class="figure">
 <img src="../images/2016-05-26-214632_531x220_scrot.png" />
 
@@ -26,7 +26,7 @@
 <img src="../images/2016-05-26-214607_763x394_scrot.png" />
 
 </div>
-<p>I was mildly annoyed because I regularly keep huge PDFs <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> in my tabs to refer to them regularly – but only let PDFium run when i’m actively reading them to avoid any performance impact. I looked at the <a href="https://chromium.googlesource.com/chromium/src/+log/50.0.2661.102..51.0.2704.63?pretty=fuller&amp;n=10000">changelog</a> for chromium<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> and found that commit, whose description is</p>
+<p>I was mildly annoyed because I regularly keep huge PDFs <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> in my tabs to refer to them regularly – but only let PDFium run when i’m actively reading them, to avoid any performance impact. I found the appropriate <a href="https://chromium.googlesource.com/chromium/src/+log/50.0.2661.102..51.0.2704.63?pretty=fuller&amp;n=10000">changelog</a> for chromium<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> and found <a href="https://chromium.googlesource.com/chromium/src/+/e53608ba54b3aff711c1e1c68243417f99bcd340%5E%21/">the relevant commit</a>, whose description is:</p>
 <pre><code>Internal PDF viewer will always load if it is not disabled, even if
 plugins are set to CONTENT_SETTING_BLOCK in content settings.</code></pre>
 <p>(note that nothing is mentioned of the potential negative impact on performance in that commit message).</p>
