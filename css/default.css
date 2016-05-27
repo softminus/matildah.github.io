@@ -35,13 +35,12 @@ body {
     line-height: 1.3rem;
     margine-left: auto;
     margin-right: auto;
-    max-width: 960px;
     min-height:100%
     position: relative;
     font-size: 24px;
     text-rendering: optimizeLegibility;
     margin: 0px auto 0px auto;
-    width: 70%;
+    width: 80%;
 }
 
 div#header {
