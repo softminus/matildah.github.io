@@ -34,13 +34,13 @@ plugins are set to CONTENT_SETTING_BLOCK in content settings.</code></pre>
 <pre><code>-        &quot;status&quot;: &quot;up_to_date&quot;,
 +        &quot;status&quot;: &quot;fully_trusted&quot;,</code></pre>
 <p>Now I’m thinking “oh I just need to edit that JSON file, so the PDF plugin doesn’t get tagged with <code>fully_trusted</code>, and I’ll get the desired behavior back!”.</p>
-<p>Not so fast – I can’t find <em>any</em> JSON files belonging to chromium on my system! I ask my package manager what files the chromium package owns and find a suspicious-looking file called <code>/usr/lib/chromium/resources.pak</code> – and I suspect that all the non-object-code parts of chromium get somehow baked into that file. Before bothering to find what file format that is, I run <code>strings(1)</code> on it and try to find the <code>fully_trusted</code> string I want to eliminate:</p>
+<p>Not so fast – I can’t find <em>any</em> JSON files belonging to chromium on my system! I ask my package manager what files the chromium package owns and find a large (20 megabyte) file called <code>/usr/lib/chromium/resources.pak</code> – and I suspect that all the non-object-code parts of chromium get somehow baked into it during the build process. Without bothering to find out what file format is being used<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>, I run <code>strings(1)</code> on it and see if the <code>fully_trusted</code> string is in it:</p>
 <div class="figure">
 <img src="../images/2016-05-26-220110_800x552_scrot.png" />
 
 </div>
-<p>Bingo! it’s there, and as I guessed, that resources.pak is a file where all the strings/files are <a href="https://www.chromium.org/developers/design-documents/linuxresourcesandlocalizedstrings">baked together</a>. Unfortunately, because this is a binary file it is almost certainly full of fields with offset information, and fixing those up is a huge pain – I’d rather just find out how to generate it and generate it anew from all the files it contains.</p>
-<p>Fortunately, I don’t even need to do this! “<code>fully_trusted</code>”, the string i want to replace, is longer than what I want to replace it with, the string “<code>up_to_date</code>”! This means I can write it over and just pad with spaces – remember, we can’t change the length/offset of <strong>anything</strong> without having to figure out how the offsets work<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> in this file format, either of the whole .pak file or of the json file that we are editing.</p>
+<p>Bingo! it’s there, and so I search the internet to confirm my hypothesis that resources.pak is a file where all the resources/files for chromium are <a href="https://www.chromium.org/developers/design-documents/linuxresourcesandlocalizedstrings">baked together</a>. Unfortunately, because this is a binary file it is almost certainly full of fields with offset/length information, and fixing those up is a huge pain – I’d rather just find out how to generate it and generate it anew from all the files it contains.</p>
+<p>Fortunately, I don’t even need to do this! “<code>fully_trusted</code>”, the string i want to replace, is longer than what I want to replace it with, the string “<code>up_to_date</code>”! This means I can write it over and just pad with spaces<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> – remember, we can’t change the length/offset of <strong>anything in this file</strong> without figuring out how the offsets/sizes work in this file format and fixing them up as appropriate.</p>
 <p>Here’s how it looks in our hex editor before we go hands-on:</p>
 <div class="figure">
 <img src="../images/2016-05-26-221730_1599x629_scrot.png" />
@@ -72,7 +72,8 @@ plugins are set to CONTENT_SETTING_BLOCK in content settings.</code></pre>
 <ol>
 <li id="fn1"><p>for example, ~4 kilopage datasheets or papers where scatterplots aren’t bitmaps but every dot on the scatterplot is its own PDF object/entity/whatever that needs to be individually rendered and displayed.<a href="#fnref1">↩</a></p></li>
 <li id="fn2"><p>This was nontrival because this is chromium version 51 and searching for pretty much anything with “chromium 51” gives you results for chromium-51, a radioactive isotope of chromium used in radiolabeling studies<a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p>and fixing them up as appropriate<a href="#fnref3">↩</a></p></li>
+<li id="fn3"><p>running <code>file(1)</code> on it just gave me “<code>data</code>”, so it’s probably bespoke<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>this is a JSON file so padding with spaces doesn’t change what it parses to. If it were a different file format we’d need to use different tricks – for example, if we were editing the text section of an executable, we could pad with NOPs.<a href="#fnref4">↩</a></p></li>
 </ol>
 </div>
 ]]></description>
