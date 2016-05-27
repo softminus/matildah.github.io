@@ -7,8 +7,76 @@
         <description><![CDATA[Kia's blog]]></description>
         <atom:link href="https://matildah.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Mon, 23 May 2016 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 26 May 2016 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Reverting annoying changes in the chromium web browser with binary patching!</title>
+    <link>https://matildah.github.io/posts/2016-05-26-binary-patching.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on May 26, 2016
+    
+</div>
+
+<p>Chromium got <a href="https://chromium.googlesource.com/chromium/src/+/e53608ba54b3aff711c1e1c68243417f99bcd340%5E%21/">this</a> commit, which makes the “Let me choose when to run plugin content” option</p>
+<div class="figure">
+<img src="../images/2016-05-26-214632_531x220_scrot.png" />
+
+</div>
+<p>in <code>chrome://settings/content</code> be ineffective for PDFium, the chromium PDF reader plugin:</p>
+<div class="figure">
+<img src="../images/2016-05-26-214607_763x394_scrot.png" />
+
+</div>
+<p>I was mildly annoyed because I regularly keep huge PDFs <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> in my tabs to refer to them regularly – but only let PDFium run when i’m actively reading them to avoid any performance impact. I looked at the <a href="https://chromium.googlesource.com/chromium/src/+log/50.0.2661.102..51.0.2704.63?pretty=fuller&amp;n=10000">changelog</a> for chromium<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> and found that commit, whose description is</p>
+<pre><code>Internal PDF viewer will always load if it is not disabled, even if
+plugins are set to CONTENT_SETTING_BLOCK in content settings.</code></pre>
+<p>(note that nothing is mentioned of the potential negative impact on performance in that commit message).</p>
+<p>The commit has two parts, some C++ code introducing a new plugin tag called “<code>PluginMetadata::SECURITY_STATUS_FULLY_TRUSTED</code>”, which implies “you can’t enable click-to-run for this plugin, it’ll always run, want it or not”, but the part that actually tags the chromium PDF plugin with the <code>fully_trusted</code> tag is not in C++ code, it’s in some .json file:</p>
+<pre><code>-        &quot;status&quot;: &quot;up_to_date&quot;,
++        &quot;status&quot;: &quot;fully_trusted&quot;,</code></pre>
+<p>Now I’m thinking “oh I just need to edit that JSON file, so the PDF plugin doesn’t get tagged with <code>fully_trusted</code>, and I’ll get the desired behavior back!</p>
+<p>Not so fast – I can’t find a file with that name anywhere on my system! I ask my package manager what files the chromium package owns and find a suspicious-looking file called /usr/lib/chromium/resources.pak – and I suspect that all the non-object-code parts of chromium get somehow baked into that file. Before bothering to find what file format that is, I run <code>strings(1)</code> on it and try to find the <code>fully_trusted</code> string I want to eliminate: <img src="../images/2016-05-26-220110_800x552_scrot.png" /></p>
+<p>Bingo! it’s there, and as I guessed, that resources.pak is a file where all the strings/files are <a href="https://www.chromium.org/developers/design-documents/linuxresourcesandlocalizedstrings">baked together</a>. Unfortunately, because this is a binary file it is almost certainly full of fields with offset information, and fixing those up is a huge pain – I’d rather just find out how to generate it and generate it anew from all the files it contains.</p>
+<p>Fortunately, I don’t even need to do this! “<code>fully_trusted</code>”, the string i want to replace, is longer than what I want to replace it with, the string “<code>up_to_date</code>”! This means I can write it over and just pad with spaces – remember, we can’t change the length/offset of <strong>anything</strong> without having to figure out how the offsets work<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> in this file format, either of the whole .pak file or of the json file that we are editing.</p>
+<p>Here’s how it looks in our hex editor before we go hands-on:</p>
+<div class="figure">
+<img src="../images/2016-05-26-221730_1599x629_scrot.png" />
+
+</div>
+<p>And how it looks after we set our hex editor’s edit mode to “overwrite” and replaced and padded:</p>
+<div class="figure">
+<img src="../images/2016-05-26-221839_1599x586_scrot.png" />
+
+</div>
+<p>We check that we didn’t mess up the length of the file:</p>
+<div class="figure">
+<img src="../images/2016-05-26-222035_586x69_scrot.png" />
+
+</div>
+<p>and here’s the diff:</p>
+<pre><code>35301c35301
+&lt; 001477d8: 7374 6174 7573 223a 2022 6675 6c6c 795f 7472 7573 7465 6422 2c0a 2020 2020 2020 2020 2263 6f6d  status&quot;: &quot;fully_trusted&quot;,.        &quot;com
+---
+&gt; 001477d8: 7374 6174 7573 223a 2022 7570 5f74 6f5f 6461 7465 222c 2020 200a 2020 2020 2020 2020 2263 6f6d  status&quot;: &quot;up_to_date&quot;,   .        &quot;com
+35309c35309
+&lt; 00147908: 7573 223a 2022 6675 6c6c 795f 7472 7573 7465 6422 2c0a 2020 2020 2020 2020 2263 6f6d 6d65 6e74  us&quot;: &quot;fully_trusted&quot;,.        &quot;comment
+---
+&gt; 00147908: 7573 223a 2022 7570 5f74 6f5f 6461 7465 222c 2020 200a 2020 2020 2020 2020 2263 6f6d 6d65 6e74  us&quot;: &quot;up_to_date&quot;,   .        &quot;comment</code></pre>
+<p>We replace the original resources.pak with modded .pak and restart chromium, and it works perfectly!</p>
+<p><img src="../images/2016-05-26-222718_359x79_scrot.png" /> <img src="../images/2016-05-26-222421_1236x677_scrot.png" /></p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>either 4 kilopage datasheets or papers where every dot on a scatterplot is its own PDF object/entity/whatever and not part of a bitmap<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>This was nontrival because this is chromium version 51 and searching “chromium 51” gives you results for chromium-51, a radioactive isotope of chromium used in radiolabeling studies<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>and fixing them up as appropriate<a href="#fnref3">↩</a></p></li>
+</ol>
+</div>
+]]></description>
+    <pubDate>Thu, 26 May 2016 00:00:00 UT</pubDate>
+    <guid>https://matildah.github.io/posts/2016-05-26-binary-patching.html</guid>
+    <dc:creator>Kia</dc:creator>
+</item>
+<item>
     <title>NTP implementation status</title>
     <link>https://matildah.github.io/posts/2016-05-23-ntp-status.html</link>
     <description><![CDATA[<div class="info">
