@@ -30,14 +30,13 @@ The commit has two parts, some C++ code introducing a new plugin tag called "`Pl
 
 Now I'm thinking "oh I just need to edit that JSON file, so the PDF plugin doesn't get tagged with `fully_trusted`, and I'll get the desired behavior back!".
 
-Not so fast -- I can't find *any* JSON files belonging to chromium on my system! I ask my package manager what files the chromium package owns and find a suspicious-looking file called `/usr/lib/chromium/resources.pak` -- and I suspect that all the non-object-code parts of chromium get somehow baked into that file. Before bothering to find what file format that is, I run `strings(1)` on it and try to find the `fully_trusted` string I want to eliminate:
+Not so fast -- I can't find *any* JSON files belonging to chromium on my system! I ask my package manager what files the chromium package owns and find a large (20 megabyte) file called `/usr/lib/chromium/resources.pak` -- and I suspect that all the non-object-code parts of chromium get somehow baked into it during the build process. Without bothering to find out what file format is being used^[running `file(1)` on it just gave me "`data`", so it's probably bespoke], I run `strings(1)` on it and see if the `fully_trusted` string is in it:
 
 ![](../images/2016-05-26-220110_800x552_scrot.png)
 
-Bingo! it's there, and as I guessed, that resources.pak is a file where all the strings/files are [baked together](https://www.chromium.org/developers/design-documents/linuxresourcesandlocalizedstrings). Unfortunately, because this is a binary file it is almost certainly full of fields with offset information, and fixing those up is a huge pain -- I'd rather just find out how to generate it and generate it anew from all the files it contains.
+Bingo! it's there, and so I search the internet to confirm my hypothesis that resources.pak is a file where all the resources/files for chromium are [baked together](https://www.chromium.org/developers/design-documents/linuxresourcesandlocalizedstrings). Unfortunately, because this is a binary file it is almost certainly full of fields with offset/length information, and fixing those up is a huge pain -- I'd rather just find out how to generate it and generate it anew from all the files it contains.
 
-
-Fortunately, I don't even need to do this! "`fully_trusted`", the string i want to replace, is longer than what I want to replace it with, the string "`up_to_date`"! This means I can write it over and just pad with spaces -- remember, we can't change the length/offset of **anything** without having to figure out how the offsets work^[and fixing them up as appropriate] in this file format, either of the whole .pak file or of the json file that we are editing.
+Fortunately, I don't even need to do this! "`fully_trusted`", the string i want to replace, is longer than what I want to replace it with, the string "`up_to_date`"! This means I can write it over and just pad with spaces^[this is a JSON file so padding with spaces doesn't change what it parses to. If it were a different file format we'd need to use different tricks -- for example, if we were editing the text section of an executable, we could pad with NOPs.] -- remember, we can't change the length/offset of **anything in this file** without figuring out how the offsets/sizes work in this file format and fixing them up as appropriate.
 
 Here's how it looks in our hex editor before we go hands-on:
 
