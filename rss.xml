@@ -34,7 +34,11 @@ plugins are set to CONTENT_SETTING_BLOCK in content settings.</code></pre>
 <pre><code>-        &quot;status&quot;: &quot;up_to_date&quot;,
 +        &quot;status&quot;: &quot;fully_trusted&quot;,</code></pre>
 <p>Now I’m thinking “oh I just need to edit that JSON file, so the PDF plugin doesn’t get tagged with <code>fully_trusted</code>, and I’ll get the desired behavior back!</p>
-<p>Not so fast – I can’t find a file with that name anywhere on my system! I ask my package manager what files the chromium package owns and find a suspicious-looking file called /usr/lib/chromium/resources.pak – and I suspect that all the non-object-code parts of chromium get somehow baked into that file. Before bothering to find what file format that is, I run <code>strings(1)</code> on it and try to find the <code>fully_trusted</code> string I want to eliminate: <img src="../images/2016-05-26-220110_800x552_scrot.png" /></p>
+<p>Not so fast – I can’t find a file with that name anywhere on my system! I ask my package manager what files the chromium package owns and find a suspicious-looking file called /usr/lib/chromium/resources.pak – and I suspect that all the non-object-code parts of chromium get somehow baked into that file. Before bothering to find what file format that is, I run <code>strings(1)</code> on it and try to find the <code>fully_trusted</code> string I want to eliminate:</p>
+<div class="figure">
+<img src="../images/2016-05-26-220110_800x552_scrot.png" />
+
+</div>
 <p>Bingo! it’s there, and as I guessed, that resources.pak is a file where all the strings/files are <a href="https://www.chromium.org/developers/design-documents/linuxresourcesandlocalizedstrings">baked together</a>. Unfortunately, because this is a binary file it is almost certainly full of fields with offset information, and fixing those up is a huge pain – I’d rather just find out how to generate it and generate it anew from all the files it contains.</p>
 <p>Fortunately, I don’t even need to do this! “<code>fully_trusted</code>”, the string i want to replace, is longer than what I want to replace it with, the string “<code>up_to_date</code>”! This means I can write it over and just pad with spaces – remember, we can’t change the length/offset of <strong>anything</strong> without having to figure out how the offsets work<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> in this file format, either of the whole .pak file or of the json file that we are editing.</p>
 <p>Here’s how it looks in our hex editor before we go hands-on:</p>
