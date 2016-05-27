@@ -18,7 +18,7 @@ plugins are set to CONTENT_SETTING_BLOCK in content settings.
 ~~~~~~~~
 
 
-(note that nothing is mentioned of the potential negative impact on performance in that commit message).
+(That commit message doesn't mention potential negative impact on performance, yaey).
 
 The commit has two parts, some C++ code introducing a new plugin tag called "`PluginMetadata::SECURITY_STATUS_FULLY_TRUSTED`", which when present on a plugin, creates the "you can't enable click-to-run for this plugin, it'll always run, want it or not" behavior (which we want to get rid of), but the part that actually tags the chromium PDF plugin with the `fully_trusted` tag is not in C++ code, it's in some .json file:
 
