@@ -20,7 +20,7 @@ plugins are set to CONTENT_SETTING_BLOCK in content settings.
 
 (note that nothing is mentioned of the potential negative impact on performance in that commit message).
 
-The commit has two parts, some C++ code introducing a new plugin tag called "`PluginMetadata::SECURITY_STATUS_FULLY_TRUSTED`", which implies "you can't enable click-to-run for this plugin, it'll always run, want it or not", but the part that actually tags the chromium PDF plugin with the `fully_trusted` tag is not in C++ code, it's in some .json file:
+The commit has two parts, some C++ code introducing a new plugin tag called "`PluginMetadata::SECURITY_STATUS_FULLY_TRUSTED`", which when present on a plugin, creates the "you can't enable click-to-run for this plugin, it'll always run, want it or not" behavior (which we want to get rid of), but the part that actually tags the chromium PDF plugin with the `fully_trusted` tag is not in C++ code, it's in some .json file:
 
 
 ~~~~~~~~
@@ -28,7 +28,7 @@ The commit has two parts, some C++ code introducing a new plugin tag called "`Pl
 +        "status": "fully_trusted",
 ~~~~~~~~
 
-Now I'm thinking "oh I just need to edit that JSON file, so the PDF plugin doesn't get tagged with `fully_trusted`, and I'll get the desired behavior back!
+Now I'm thinking "oh I just need to edit that JSON file, so the PDF plugin doesn't get tagged with `fully_trusted`, and I'll get the desired behavior back!".
 
 Not so fast -- I can't find a file with that name anywhere on my system! I ask my package manager what files the chromium package owns and find a suspicious-looking file called /usr/lib/chromium/resources.pak -- and I suspect that all the non-object-code parts of chromium get somehow baked into that file. Before bothering to find what file format that is, I run `strings(1)` on it and try to find the `fully_trusted` string I want to eliminate:
 
