@@ -44,7 +44,7 @@ plugins are set to CONTENT_SETTING_BLOCK in content settings.</code></pre>
 <pre><code>-        &quot;status&quot;: &quot;up_to_date&quot;,
 +        &quot;status&quot;: &quot;fully_trusted&quot;,</code></pre>
 <p>Now I’m thinking “oh I just need to edit that JSON file, so the PDF plugin doesn’t get tagged with <code>fully_trusted</code>, and I’ll get the desired behavior back!”.</p>
-<p>Not so fast – I can’t find a file with that name anywhere on my system! I ask my package manager what files the chromium package owns and find a suspicious-looking file called /usr/lib/chromium/resources.pak – and I suspect that all the non-object-code parts of chromium get somehow baked into that file. Before bothering to find what file format that is, I run <code>strings(1)</code> on it and try to find the <code>fully_trusted</code> string I want to eliminate:</p>
+<p>Not so fast – I can’t find a file with that name anywhere on my system! I ask my package manager what files the chromium package owns and find a suspicious-looking file called <code>/usr/lib/chromium/resources.pak</code> – and I suspect that all the non-object-code parts of chromium get somehow baked into that file. Before bothering to find what file format that is, I run <code>strings(1)</code> on it and try to find the <code>fully_trusted</code> string I want to eliminate:</p>
 <div class="figure">
 <img src="../images/2016-05-26-220110_800x552_scrot.png" />
 
