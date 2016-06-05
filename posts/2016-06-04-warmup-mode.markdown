@@ -17,7 +17,7 @@ I've also written a [list type](https://github.com/matildah/mirage-ntp/blob/8236
 
 
 
-![[Kitsu Chiri](https://en.wikipedia.org/wiki/Sayonara,_Zetsubou-Sensei) was right.](../images/leap.png)
+![[Kitsu Chiri](https://en.wikipedia.org/wiki/Sayonara,_Zetsubou-Sensei) was right.^[Image is from page 3 of chapter 166 of さよなら絶望先生, translated by [Suimasen Scans](https://suimasenscans.wordpress.com/)]](../images/leap.png)
 
 
 
