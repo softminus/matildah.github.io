@@ -23,7 +23,7 @@ I've also written a [list type](https://github.com/matildah/mirage-ntp/blob/8236
 
 NTP, unfortunately, uses the UTC timescale and not $(TAI, leap\,offset)$[^2] to transmit time, and to create a reliable NTP client implementation, code needs to be written to robustly deal with the horrid discontinuities and repeated time values that are caused by a leap second event -- and to not interpret those values and the subsequent 1-second offset as errors or invalid data or a change that must be corrected by the timing algorithms. RADclock has code that attempts to do this which I haven't yet analyzed.
 
-Semi-relatedly, [Darryl Veitch](http://crin.eng.uts.edu.au/~darryl/), one of the creators of RADclock -- the superb NTP implementation that I am basing my work on, did a first-of-its-kind [analysis](http://crin.eng.uts.edu.au/~darryl/Publications/LeapSecond_camera.pdf) of public NTP Stratum 1 server replies **during a leap second event** (compared against a RADclock instance and independently measured with a GPS-synchronized precision network capture card) and demonstrated widespread[^3] erroneous/noncompliant behaviour related to the leap second event.
+Semi-relatedly, [Darryl Veitch](http://crin.eng.uts.edu.au/~darryl/), one of the creators of RADclock -- the superb NTP implementation that I am basing my work on, did a first-of-its-kind [analysis](http://crin.eng.uts.edu.au/~darryl/Publications/LeapSecond_camera.pdf) of public NTP Stratum 1 server replies **during the 2015 leap second event** (compared against a RADclock instance and independently measured with a GPS-synchronized precision network capture card) and demonstrated widespread[^3] erroneous/noncompliant behaviour related to the leap second event.
 
 
 
