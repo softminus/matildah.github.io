@@ -5,35 +5,18 @@ header {
     margin-right: auto;
 }
 
-.content {
-    margin-bottom: 1.3rem;
-    margin-top: 1.3rem;
-}
 
 @media all {
     html { font-size: 24px; }
     .content, header, footer { width: 30rem; }
-
-    span.aside,
-    aside {
-        clear: both;
-        float: left;
-        font-size: 0.7rem;
-        left: -3rem;
-        line-height: 0.91rem;
-        margin: 0;
-        position: absolute;
-        text-align: right;
-        width: 7rem;
-    }
-
+    .caption {display: block; font-size:5px;}
 }
 
 body {
     color: black;
     font-style: normal;
     line-height: 1.3rem;
-    margine-left: auto;
+    margin-left: auto;
     margin-right: auto;
     min-height:100%
     position: relative;
@@ -42,6 +25,14 @@ body {
     margin: 0px auto 0px auto;
     width: 80%;
 }
+
+.caption {
+    margin-left: auto;
+    margin-right: auto;
+    margin: 2px;
+    text-align: center;
+}
+
 
 div#header {
     border-bottom: 2px solid black;
