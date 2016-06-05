@@ -1,5 +1,5 @@
 ---
-title: Warmup mode done
+title: Warmup mode done -- here's what's left
 ---
 
 I've finished all the [estimators](https://github.com/matildah/mirage-ntp/blob/82368fdeb673e6f0b063e1f1262aa21a127ab9d7/lib/RADclock/estimators.ml#L78) for the warmup phase of the RADclock algorithm. What's left is:
