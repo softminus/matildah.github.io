@@ -7,8 +7,22 @@
         <description><![CDATA[Kia's blog]]></description>
         <atom:link href="https://matildah.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 05 Jun 2016 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Wed, 17 Aug 2016 00:00:00 UT</lastBuildDate>
         <item>
+    <title>NTP implementation status, part 2</title>
+    <link>https://matildah.github.io/posts/2016-08-17-status.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on August 17, 2016
+    
+</div>
+
+<p>I have a working NTP client that works in a unikernel; and I am working on cleanup / testing / MirageOS integration work as well as properly packaging the code/data in a single module that is NTP-independent (so it can be reused for PTP and other time synchronization protocols) and an NTP-only module that handles all the NTP awfulness (such as leap seconds). This project isn’t dead, I’ve just needed to take some time off working on it for personal reasons.</p>
+]]></description>
+    <pubDate>Wed, 17 Aug 2016 00:00:00 UT</pubDate>
+    <guid>https://matildah.github.io/posts/2016-08-17-status.html</guid>
+    <dc:creator>Kia</dc:creator>
+</item>
+<item>
     <title>A note on "stratum 1"</title>
     <link>https://matildah.github.io/posts/2016-06-05-stratum-1.html</link>
     <description><![CDATA[<div class="info">
