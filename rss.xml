@@ -7,8 +7,83 @@
         <description><![CDATA[Kia's blog]]></description>
         <atom:link href="https://matildah.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Wed, 17 Aug 2016 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Tue, 17 Oct 2017 00:00:00 UT</lastBuildDate>
         <item>
+    <title>I have a problem, and I need your help</title>
+    <link>https://matildah.github.io/posts/2017-10-17-help.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on October 17, 2017
+    
+</div>
+
+<h2 id="intro">Intro</h2>
+<p>I had a stable, safe living situation for a year. But my current living situation (which I’ll describe in detail below) is causing me immense damage and eroding my ability to escape it. I need out.</p>
+<p>Unfortunately, I can’t afford the higher deposit a new place would require, and I don’t have suitable proof of income. I can also only manage so much rent. You can <a href="#summary">skip to a summary of how bad things are and how to help here</a>. You can <a href="#updates">skip to a section with the updated situation</a>. Tl;dr “cash.me” / Square Cash wouldn’t let me access any money that was sent to me with their service (it refunded everyone and send emails to that effect) so I posted a paypal email address instead.</p>
+<h2 id="housing">Housing</h2>
+<p>This year, I’ve found myself living in what I can only describe as an illegally-overcrowded airbnb rooming house after my previous housemate needed to move on. Originally this was meant as a stopgap to get me through the winter, but that fell through. Like the other tenants, I share a 10 feet x 10 feet<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> room containing two bunk beds and housing four people. There are four such rooms (that house more than 20 people in total) plus communal washing, cooking facilities. The communal facilities are not especially safe and I have had clothing damaged or destroyed by others in the laundry on more than one occasion. The building (built and zoned as a single-family home) hosts more than 20 people in only four small bedrooms. Since the building only had 1,100 square feet total, it flagrantly violates every applicable occupancy restriction; both those that are a function of area of bedrooms and those that are a function of total area.</p>
+<p>I don’t have any private space of my own, and I don’t even access to any sort of furniture usable as a table: there’s literally no flat surface I can place something and have it not be tampered with or taken. Not only is this make it impossible for me to work with my laptop alongside a paper notebook; it makes longer-term storage pathologically difficult.</p>
+<p>I have to use my bed for storage, and that’s caused problems. I’ve accidentally spilled water from my water pitcher onto my laptop which rendered it inoperative. I did manage to repair<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> the laptop but given the amount of water that got inside the case and where it ended up, the damage would have been irreversible had I not noticed the inundation in time; and it nevertheless left me without any computer for several days until I obtained the necessary parts to reassemble it.</p>
+<h2 id="self-care-and-state-of-mind">Self-Care and State of Mind</h2>
+<p>Too many hours of my days are spent dealing with disruptive nonsense (or open hostility) from the landlord or his other tenants, which ruins my ability to properly look after myself – much less my ability to do any sort of serious intellectual work. I am having difficulty looking after myself adequately here. For example, I turned out to have iron deficiency anaemia after I’d been here a while. Worse, I am having difficulty staying hydrated. This was enough cause for concern in cooler weather, but over the summer the effect on my health (not to mention my digestion) has been debilitating. None of these are issues I’d ever had before prior to living here.</p>
+<p>I always have to be vigilant about my surroundings, and I certainly am not able to get anywhere near the state of “<a href="https://en.wikipedia.org/wiki/Flow_(psychology)">flow</a>” / “hyperfocus” I need to attain to properly do complex technical work I used to do (whether it be my abortive attempts at writing Haskell to parse hairy text-based protocols, writing and testing high-precision time/frequency transfer software in OCaml, trying to understand the actual maths<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> of <a href="https://en.wikipedia.org/wiki/Orthogonal_frequency-division_multiplexing">OFDM</a>, or PCB design); neither am I able to be relaxed enough in my off-time to rest usefully. In fact, I’ve had difficulty writing this text and have had to ask for help after things have dragged out for many days.</p>
+<h2 id="abusive-landlord">Abusive Landlord</h2>
+<p>The landlord never gives any sort of notice (as he is required by law) before doing “improvements”, which are invariably done with substandard materials (usually scrounged from Craigslist), shoddy methods, and usually leave a mess. There’s nothing like returning home and finding sawdust in my bed – sawdust from some dirty plywood of unknown provenance and quite possibly treated with toxic<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> preservatives. Leaving to go outside (where I may have a chance to be in a somewhat less awful environment) is always a game of Russian roulette: will the landlord have done some new unannounced “improvement” and somehow ruined another one of my possessions (that I couldn’t carry with me in my handbag) this time?</p>
+<p>I’ve always been punctual with paying rent, I clean up after myself, and nothing but polite to the landlord nor any of the other tenants/guests. Furthermore, I went above and beyond my legal obligations – whenever I noticed a serious issue with the building, I notified the landlord so he could rectify it. For instance, I told him when I noticed a unattended open crawlspace hatch. Similarly, when I realised that the warping floorboards in the kitchen were caused by steam from the shower downstairs entering a gap in the bathroom ceiling, I told him. He had expressed concern about the warped floorboards and was under the misapprehension that it was caused by water leaking from the kitchen sink. In return for this diagnosis<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>, I was press-ganged into fixing the issue, at my own time and expense. This landlord uses threats of eviction to make me do various “improvements” to his property – even if I pay the bloody rent. I am to be a tenant, not his unpaid employee!</p>
+<h2 id="other-tenants">Other Tenants</h2>
+<p>Unfortunately, it’s not just the landlord who’s a problem.</p>
+<p>Recently I walked in to “my” room and was greeted by a large chunk of chewed gum intentionally squished into my bed. Not even on washable bog-standard sheets, but squished onto on a specialty <a href="https://www.amazon.co.jp/dp/B00BS1YHY0">silica gel mattress pad</a> I had imported from Japan (there’s no equivalent product available in the US or from a US-based online store). That humidity-absorbing mattress pad is quite unflexible and cannot be washed in a standard washing machine. Since I was in the top bunk, there’s no way it could have fallen there: someone purposefully placed it there and squished it – hard enough such that regular washing will not dislodge it – into the fabric. Since I had to sleep when I discovered my bed had been ruined, I went to a couch in a common room to sleep. After I woke up I found my handbag on the floor – pushed with such force off the table that my phone, which was <em>inside</em> my bag and had been in brand-new condition, had its display shattered from top to bottom.</p>
+<p>Leaving anything of value outside of my sight is dangerous. The day after an unidentified tenant had squished gum into my bed, my wallet got stolen out of my handbag, which was enormously disruptive. Not just cash was taken – my debit cards and driver’s licence were gone too, which led to a very precarious week until I managed<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> to get replacement identification and payment cards. Even things of little value get taken: someone stole a container of body wash I had left in the shower for a few hours.</p>
+<p>It’s not just vandalism and theft. One tenant would regularly (including when I was lying down and trying to fall asleep) scream at me and threaten to wake me up when I was asleep to scold me and have a petty<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> argument about something inconsequential not connected to me.</p>
+<p>There is also a different tenant who has intentionally grabbed/hit me from behind without any of {justification, warning, consent} – and has persisted in doing so even when I have politely and firmly told him that such actions are unacceptable. Living in such a low-trust environment wears on one’s nerves very fast: being always on alert for this sort of aggression is not pleasant.</p>
+<h2 id="health-issues">Health Issues</h2>
+<p>Then there’s the direct health-and-safety issues. Smoke regularly blows inside from people smoking right next to windows/doors, which irritates my lungs and makes breathing hard (I’ve had multiple cases of pneumonia in the past, and the concentrated smoke irritates my lungs).</p>
+<p>There’s filth everywhere, even on doorknobs and faucets. Cleaning them is a fool’s errand, there’s no sense in cleaning something that’ll get dirtied up by people with such little regard for cleanliness that they don’t wash their hands even after cleaning up animal feces. I thus avoid touching anything others touch with my bare hands. I use paper towels to touch any doorknob or faucet, because I don’t want to have to wash my hands so many times the skin falls apart.</p>
+<p>Alas, my fears proved well-founded when I caught a serious infection. A few weeks ago I noticed an insect bite that wasn’t healing and was worried it was some kind of venomous spider bite<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a> because there was a unfamiliar exudate seeping from the wound and the redness surrounding the site was expanding very quickly – the diameter increased by a few centimetres over a ~10 hour period. When I went to hospital the treating doctor diagnosed it as a <a href="https://en.wikipedia.org/wiki/Cellulitis">soft-tissue infection</a> likely caused by <a href="https://en.wikipedia.org/wiki/Methicillin-resistant_Staphylococcus_aureus">MRSA</a> and prescribed <a href="https://en.wikipedia.org/wiki/Trimethoprim/sulfamethoxazole">trimethoprim/sulfamethoxazole</a>, a firstline treatment for such MRSA infections. As I found out when I was in hospital, there are several risk factors for community-acquired (as opposed to hospital-acquired) MRSA; none of which I meet except “living in crowded or unsanitary conditions”. The place I’m living in is clearly both, and had I waited any longer for treatment I likely would have ended up in hospital. Indeed; as the doctor explained to me, rapidly-spreading infections like these can get very serious quickly: hence her order that I go to the emergency room immediately should the infected area<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> continue to expand after I started antibiotics.</p>
+<h2 id="summary">Summary and how to help</h2>
+<p>So here’s the kind of stuff I’ve been dealing with:</p>
+<ul>
+<li>An environment so unsanitary nobody looked twice at the guy who didn’t wash his hands after cleaning up animal feces</li>
+<li>A MRSA infection that almost sent me to hospital</li>
+<li>Multiple cases of damaged or destroyed clothing</li>
+<li>Wilful destruction of my property including my phone</li>
+<li>Wallet including all my means of payment and ID stolen</li>
+<li>Being assaulted by people I live with</li>
+<li>Being used as free labour under threat of eviction by my landlord</li>
+<li>Resulting health issues that stop me from functioning well enough to reliably feed myself, let alone get back to programming or even write this text without help</li>
+</ul>
+<p>To sum up: my living situation is causing me so much property, physical and psychological damage that I cannot escape it on my own. Please help me out of it!</p>
+<p>Ways to help include:</p>
+<ul>
+<li>Sending me money towards a deposit and/or rent – either with paypal (the email address for that is ito@fastmail.com) or 1Bb8rg9nQps1BRXEGuYnUc6KTfu1gqcehM with bitcoin. Feel free to contact me if neither of those work for you.</li>
+<li>If you are local enough to me (I was in the <a href="https://en.wikipedia.org/wiki/Seattle_metropolitan_area">Seattle/Tacoma area</a>, have access to a car, and am returning there on 23 October 2017 (from a trip I had planned long in advance)) and have a non-PO Box address I can use to receive mail until I have a proper address of my own again</li>
+<li>Sending me money to repair/replace my damaged possessions</li>
+<li>Helping me find somewhere I can rent/stay without proof of income</li>
+<li>If you’re local enough to me, helping out with some of these issues</li>
+<li>Anything else that might help with this situation – feel free to contact me on <a href="https://twitter.com/aptlyamphoteric">twitter</a> (DMs open to all) or via email at vgb@snfgznvy.pbz (<a href="http://www.rot13.com/">rot13</a>’d)</li>
+</ul>
+<p>I’ll be posting further updates here.</p>
+<h3 id="updates">Updates</h3>
+<p>I had a link to send money with “cash.me” (Square Cash). Unfortunately, when I tried to accept the payments (and after providing all information requested), it gave an error and refunded <strong>every payment</strong> to everyone. This means that if you sent money with cash.me (or anything besides bitcoin or paypal) – <em>I have not received it</em> (square cash has sent emails to that effect).</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>3 metres x 3 metres<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>When I opened the case, water profusely dripped out of the laptop, and there was quite a bit of water clinging to the motherboard in the spaces between the motherboard and the insulating films attached to it. I had to remove all the <a href="https://pbs.twimg.com/media/DElTcmAUAAAvSEf.jpg:orig">self-adhesive insulating film and double-sided foam adhesive</a> off the motherboard to get rid of all the trapped water. Had I not known to do so, the water clinging to the motherboard (which didn’t drip out on its own) would have eventually ruined the motherboard. After letting the motherboard fully dry, I used <a href="https://pbs.twimg.com/media/DElTHNVUAAANu7p.jpg:orig">kapton tape</a> to insulate and tape-down all appropriate assemblies before reassembly.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>I’ve gotten as far as understanding that the circular prefix is no arbitrary choice – it turns the matrix representing the effect of the channel’s dispersion into a circulant matrix, which is diagonalizable by a Fourier transform, and that seems like something quite useful.<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>The “arsenate” in “<a href="https://en.wikipedia.org/wiki/Chromated_copper_arsenate">chromated copper arsenate</a>” is arsenic, the famous poison!<a href="#fnref4">↩</a></p></li>
+<li id="fn5"><p>Which, of course, turned out to be correct.<a href="#fnref5">↩</a></p></li>
+<li id="fn6"><p>I had to use Apple Pay on my phone (which was still set up with one of of my cards that got stolen) to buy a prepaid payment card, and order a new driver’s licence with the prepaid card.<a href="#fnref6">↩</a></p></li>
+<li id="fn7"><p>Something about an interior door (which many people regularly use) having been left open.<a href="#fnref7">↩</a></p></li>
+<li id="fn8"><p>I had received numerous insect bites on my legs while sleeping and never could identify the causative insects.<a href="#fnref8">↩</a></p></li>
+<li id="fn9"><p>She helpfully marked the current infected area with surgical marker as a reference.<a href="#fnref9">↩</a></p></li>
+</ol>
+</div>
+]]></description>
+    <pubDate>Tue, 17 Oct 2017 00:00:00 UT</pubDate>
+    <guid>https://matildah.github.io/posts/2017-10-17-help.html</guid>
+    <dc:creator>Kia</dc:creator>
+</item>
+<item>
     <title>NTP implementation status, part 2</title>
     <link>https://matildah.github.io/posts/2016-08-17-status.html</link>
     <description><![CDATA[<div class="info">
