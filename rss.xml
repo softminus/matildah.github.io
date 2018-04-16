@@ -7,8 +7,45 @@
         <description><![CDATA[Kia's blog]]></description>
         <atom:link href="https://matildah.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 17 Oct 2017 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Mon, 16 Apr 2018 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Update</title>
+    <link>https://matildah.github.io/posts/2018-04-16-update.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on April 16, 2018
+    
+</div>
+
+<h2 id="since-last-time">Since last time</h2>
+<p>I did get out of the truly awful slumlord situation, but I don’t have a stable place to live. During the last part of 2017 I was out of the country to visit someone who unfortunately is now an ex. I then temporarily stayed with an acquaintance in Seattle, and in January 2018 I moved to to Los Angeles and stayed with a friend, who could only accommodate me for three months. During that period of relative stability I was able to start improving my mental health, developing a routine and good working habits as well as some new technical skills: I designed my first PCB, got an iCE40 devboard and learned Verilog <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, and brought my understanding of DSP math from “shaky intuitions” to “demodulating DPSK signals from aircraft”<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> while beginning the design and construction of an <a href="https://en.wikipedia.org/wiki/Automatic_dependent_surveillance_%E2%80%93_broadcast">ADS-B</a>/<a href="https://en.wikipedia.org/wiki/Secondary_surveillance_radar#Mode_S">Mode-S</a> aircraft <a href="https://en.wikipedia.org/wiki/Transponder_(aeronautics)">transponder</a>.</p>
+<p>In April I had to move out and I am struggling to find new housing.  My mental health situation has deteriorated markedly as a consequence, and my ability to stay focused (already tenuous due to ADHD) on technical work and other important tasks, including the housing search itself,  has been decimated due to this instability.</p>
+<p>I’d like to stay vaguely in the LA area because I’m here already so it’s easier logistically, and I have a couple of IRL friends here that can help me stay on track. I also have access to tools and test equipment to continue the electronics projects I’ve been working on.</p>
+<p>I don’t have exorbitant needs for a place to live: as long as the rent is reasonable, I have a room of my own<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> and access to a kitchen, and the other roommates are reasonable and polite, I should be fine. However, in the past I’ve tried relaxing those requirements and it’s led to utter misery and dysfunction (see prior post) so they are strict requirements.</p>
+<p>I’m decently talented in some technical fields and I know I have potential, but at the moment my mental health isn’t yet stable enough for me to be employable. I’ve only just gotten Medicaid and haven’t yet found a good therapist knowledgeable about ADHD/ASD issues that accepts it.</p>
+<p>Without proof of income, and with social anxiety making for awkward interactions with potential landlords, along with demoralizing anti-trans prejudice I have had no success finding housing so far by conventional means.  I’ve tried calling and emailing strangers off craigslist and I’ve visited a handful and they never get back to me or tell me that they chose to rent to someone else. The waiting lists for subsidized housing are many years long if not closed altogether.</p>
+<p>I really need help finding a place to live. The situation for me is very bad and getting worse. I have about $3k in savings which should be enough for a deposit, but I’m burning through it just keeping a cheap airbnb roof over my head. I do have a small stipend from a family member and could afford up to about $600/month in rent.</p>
+<h2 id="how-to-help">How to help</h2>
+<p>Ways to help include:</p>
+<ul>
+<li><p>Would you be willing to have me as a housemate, or do you know somebody (who’s somewhat near Los Angeles) who would? To be absolutely clear, I don’t want/expect/need any support nor “therapy” from whoever I am renting from. I’m admittedly shy/awkward; but I’m good at being tidy and polite, and I have never failed to pay rent on time and don’t mind placing a security deposit. I just want a stable situation that’s at least somewhat long-term.</p></li>
+<li><p>Sending me money towards a deposit and/or rent – either with paypal (the email address for that is rot13(vgb@snfgznvy.pbz)) or 1MPqXahcfenpbFQhKDRgLYr4DbxhjZ41MW with bitcoin. Feel free to contact me if neither of those work for you. I am seriously considering making a Patreon but in the meantime; I would definitely appreciate small/medium recurring contributions via either of the above methods.</p></li>
+<li><p>Anything else that might help with this situation – feel free to contact me on <a href="https://twitter.com/aptlyamphoteric">twitter</a> (DMs open to all) or via email at vgb@snfgznvy.pbz (<a href="http://www.rot13.com/">rot13</a>’d)</p></li>
+</ul>
+<p>I’ll be posting updates more regularly as well.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>I’d been wanting to get into FPGAs for a while, thanks to the <a href="http://www.clifford.at/icestorm/">open-source FPGA toolchain</a> for iCE40 I finally <a href="https://twitter.com/alt_kia/status/959686249823969281">did</a>.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>So far I’ve figured out how to use a Costas loop to demodulate BPSK (there’s a DPSK burst in the Mode-S interrogation signal and I succesfully <a href="https://twitter.com/aptlyamphoteric/status/972668081657987073">demodulated</a> <strong>a real Mode-S signal</strong> that I captured on a USRP), have written/<a href="https://twitter.com/alt_kia/status/976678774904315906">debugged</a>/tested a numerically-controlled oscillator on an iCE40 FPGA and am also working on a complex mixer. I also managed to get an LMS6002d RFIC <a href="https://twitter.com/alt_kia/status/974135870340001792">receiving</a> on 1090MHz.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>I would be okay sharing a room with someone trustworthy.<a href="#fnref3">↩</a></p></li>
+</ol>
+</div>
+]]></description>
+    <pubDate>Mon, 16 Apr 2018 00:00:00 UT</pubDate>
+    <guid>https://matildah.github.io/posts/2018-04-16-update.html</guid>
+    <dc:creator>Kia</dc:creator>
+</item>
+<item>
     <title>I have a problem, and I need your help</title>
     <link>https://matildah.github.io/posts/2017-10-17-help.html</link>
     <description><![CDATA[<div class="info">
@@ -54,7 +91,7 @@
 <p>To sum up: my living situation is causing me so much property, physical and psychological damage that I cannot escape it on my own. Please help me out of it!</p>
 <p>Ways to help include:</p>
 <ul>
-<li>Sending me money towards a deposit and/or rent – either with paypal (the email address for that is ito@fastmail.com) or 1Bb8rg9nQps1BRXEGuYnUc6KTfu1gqcehM with bitcoin. Feel free to contact me if neither of those work for you.</li>
+<li>Sending me money towards a deposit and/or rent – either with paypal (the email address for that is rot13(vgb@snfgznvy.pbz)) or 1Bb8rg9nQps1BRXEGuYnUc6KTfu1gqcehM with bitcoin. Feel free to contact me if neither of those work for you.</li>
 <li>If you are local enough to me (I was in the <a href="https://en.wikipedia.org/wiki/Seattle_metropolitan_area">Seattle/Tacoma area</a>, have access to a car, and am returning there on 23 October 2017 (from a trip I had planned long in advance)) and have a non-PO Box address I can use to receive mail until I have a proper address of my own again</li>
 <li>Sending me money to repair/replace my damaged possessions</li>
 <li>Helping me find somewhere I can rent/stay without proof of income</li>
